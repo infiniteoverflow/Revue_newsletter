@@ -1,9 +1,7 @@
 A server app built using [Shelf](https://pub.dev/packages/shelf),
-configured to enable running with [Docker](https://www.docker.com/).
+configured to enable running with [Docker](https://www.docker.com/). This app fetches the Issues of a Revue Newsletter.
 
-This sample code handles HTTP GET requests to `/` and `/echo/<message>`
-
-# Running the sample
+# Running the code
 
 ## Running with the Dart SDK
 
@@ -13,14 +11,6 @@ like this:
 ```
 $ dart run bin/server.dart
 Server listening on port 8080
-```
-
-And then from a second terminal:
-```
-$ curl http://0.0.0.0:8080
-Hello, World!
-$ curl http://0.0.0.0:8080/echo/I_love_Dart
-I_love_Dart
 ```
 
 ## Running with Docker
@@ -34,16 +24,16 @@ $ docker run -it -p 8080:8080 myserver
 Server listening on port 8080
 ```
 
-And then from a second terminal:
-```
-$ curl http://0.0.0.0:8080
-Hello, World!
-$ curl http://0.0.0.0:8080/echo/I_love_Dart
-I_love_Dart
+## Endpoint details
+
+After running the Dart app using the steps mentioned above, open the url : http://localhost:8080/newsletter
+
+**Request Method :** `POST`  
+**Request body :** 
+```json
+{
+    "profile":"The-Flutter-Bi-Weekly"
+}
 ```
 
-You should see the logging printed in the first terminal:
-```
-2021-05-06T15:47:04.620417  0:00:00.000158 GET     [200] /
-2021-05-06T15:47:08.392928  0:00:00.001216 GET     [200] /echo/I_love_Dart
-```
+_Note: Change the newsletter name accordingly to get its issue._
